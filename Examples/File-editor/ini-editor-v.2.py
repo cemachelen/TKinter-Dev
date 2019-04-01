@@ -4,6 +4,7 @@ import tkinter.messagebox as msg
 import configparser as cp
 import ntpath
 
+
 class CentralForm(tk.Toplevel):
     def __init__(self, master, my_height=80):
         super().__init__()
@@ -31,23 +32,27 @@ class AddSectionForm(CentralForm):
         self.title("Add New Section")
 
         self.main_frame = tk.Frame(self, bg="lightgrey")
-        self.name_label = tk.Label(self.main_frame, text="Section Name", bg="lightgrey", fg="black")
+        self.name_label = tk.Label(
+            self.main_frame, text="Section Name", bg="lightgrey", fg="black")
         self.name_entry = tk.Entry(self.main_frame, bg="white", fg="black")
-        self.submit_button = tk.Button(self.main_frame, text="Create", command=self.create_section)
+        self.submit_button = tk.Button(
+            self.main_frame, text="Create", command=self.create_section)
 
         self.main_frame.pack(expand=1, fill=tk.BOTH)
         self.name_label.pack(side=tk.TOP, fill=tk.X)
         self.name_entry.pack(side=tk.TOP, fill=tk.X, padx=10)
-        self.submit_button.pack(side=tk.TOP, fill=tk.X, pady=(10,0), padx=10)
+        self.submit_button.pack(side=tk.TOP, fill=tk.X, pady=(10, 0), padx=10)
 
     def create_section(self):
         section_name = self.name_entry.get()
         if section_name:
             self.master.add_section(section_name)
             self.destroy()
-            msg.showinfo("Section Added", "Section " + section_name + " successfully added")
+            msg.showinfo("Section Added", "Section " +
+                         section_name + " successfully added")
         else:
-            msg.showerror("No Name", "Please enter a section name", parent=self)
+            msg.showerror(
+                "No Name", "Please enter a section name", parent=self)
 
 
 class AddItemForm(CentralForm):
@@ -60,18 +65,21 @@ class AddItemForm(CentralForm):
         self.title("Add New Item")
 
         self.main_frame = tk.Frame(self, bg="lightgrey")
-        self.name_label = tk.Label(self.main_frame, text="Item Name", bg="lightgrey", fg="black")
+        self.name_label = tk.Label(
+            self.main_frame, text="Item Name", bg="lightgrey", fg="black")
         self.name_entry = tk.Entry(self.main_frame, bg="white", fg="black")
-        self.value_label = tk.Label(self.main_frame, text="Item Value", bg="lightgrey", fg="black")
+        self.value_label = tk.Label(
+            self.main_frame, text="Item Value", bg="lightgrey", fg="black")
         self.value_entry = tk.Entry(self.main_frame, bg="white", fg="black")
-        self.submit_button = tk.Button(self.main_frame, text="Create", command=self.create_item)
+        self.submit_button = tk.Button(
+            self.main_frame, text="Create", command=self.create_item)
 
         self.main_frame.pack(fill=tk.BOTH, expand=1)
         self.name_label.pack(side=tk.TOP, fill=tk.X)
         self.name_entry.pack(side=tk.TOP, fill=tk.X, padx=10)
         self.value_label.pack(side=tk.TOP, fill=tk.X)
         self.value_entry.pack(side=tk.TOP, fill=tk.X, padx=10)
-        self.submit_button.pack(side=tk.TOP, fill=tk.X, pady=(10,0), padx=10)
+        self.submit_button.pack(side=tk.TOP, fill=tk.X, pady=(10, 0), padx=10)
 
     def create_item(self):
         item_name = self.name_entry.get()
@@ -81,7 +89,8 @@ class AddItemForm(CentralForm):
             self.destroy()
             msg.showinfo("Item Added", item_name + " successfully added")
         else:
-            msg.showerror("Missing Info", "Please enter a name and value", parent=self)
+            msg.showerror("Missing Info",
+                          "Please enter a name and value", parent=self)
 
 
 class IniEditor(tk.Tk):
@@ -98,10 +107,14 @@ class IniEditor(tk.Tk):
 
         self.menubar = tk.Menu(self, bg="lightgrey", fg="black")
 
-        self.file_menu = tk.Menu(self.menubar, tearoff=0, bg="lightgrey", fg="black")
-        self.file_menu.add_command(label="New", command=self.file_new, accelerator="Ctrl+N")
-        self.file_menu.add_command(label="Open", command=self.file_open, accelerator="Ctrl+O")
-        self.file_menu.add_command(label="Save", command=self.file_save, accelerator="Ctrl+S")
+        self.file_menu = tk.Menu(
+            self.menubar, tearoff=0, bg="lightgrey", fg="black")
+        self.file_menu.add_command(
+            label="New", command=self.file_new, accelerator="Ctrl+N")
+        self.file_menu.add_command(
+            label="Open", command=self.file_open, accelerator="Ctrl+O")
+        self.file_menu.add_command(
+            label="Save", command=self.file_save, accelerator="Ctrl+S")
 
         self.menubar.add_cascade(label="File", menu=self.file_menu)
 
@@ -114,16 +127,19 @@ class IniEditor(tk.Tk):
         self.right_frame.pack_propagate(0)
 
         self.file_name_var = tk.StringVar(self)
-        self.file_name_label = tk.Label(self, textvar=self.file_name_var, fg="black", bg="white", font=(None, 12))
+        self.file_name_label = tk.Label(
+            self, textvar=self.file_name_var, fg="black", bg="white", font=(None, 12))
         self.file_name_label.pack(side=tk.TOP, expand=1, fill=tk.X, anchor="n")
 
         self.section_select = tk.Listbox(self.left_frame, selectmode=tk.SINGLE)
         self.section_select.configure(exportselection=False)
         self.section_select.pack(expand=1)
-        self.section_select.bind("<<ListboxSelect>>", self.display_section_contents)
+        self.section_select.bind(
+            "<<ListboxSelect>>", self.display_section_contents)
 
-        self.section_add_button = tk.Button(self.left_frame, text="Add Section", command=self.add_section_form)
-        self.section_add_button.pack(pady=(0,20))
+        self.section_add_button = tk.Button(
+            self.left_frame, text="Add Section", command=self.add_section_form)
+        self.section_add_button.pack(pady=(0, 20))
 
         self.left_frame.pack(side=tk.LEFT, fill=tk.BOTH)
         self.right_frame.pack(side=tk.LEFT, expand=1, fill=tk.BOTH)
@@ -150,7 +166,8 @@ class IniEditor(tk.Tk):
         self.right_frame.configure(height=new_height)
 
     def file_new(self, event=None):
-        ini_file = filedialog.asksaveasfilename(filetypes=[("Configuration file", "*.ini")])
+        ini_file = filedialog.asksaveasfilename(
+            filetypes=[("Configuration file", "*.ini")])
 
         while ini_file and not ini_file.endswith(".ini"):
             msg.showerror("Wrong Filetype", "Filename must end in .ini")
@@ -160,7 +177,8 @@ class IniEditor(tk.Tk):
             self.parse_ini_file(ini_file)
 
     def file_open(self, event=None):
-        ini_file = filedialog.askopenfilename(filetypes=[("Configuration file", "*.ini")])
+        ini_file = filedialog.askopenfilename(
+            filetypes=[("Configuration file", "*.ini")])
 
         while ini_file and not ini_file.endswith(".ini"):
             msg.showerror("Wrong Filetype", "Please select an ini file")
@@ -177,7 +195,8 @@ class IniEditor(tk.Tk):
         for section in self.active_ini:
             for key in self.active_ini[section]:
                 try:
-                    self.active_ini[section][key] = self.ini_elements[section][key].get()
+                    self.active_ini[section][key] = self.ini_elements[section][key].get(
+                    )
                 except KeyError:
                     # wasn't changed, no need to save it
                     pass
@@ -191,7 +210,8 @@ class IniEditor(tk.Tk):
         AddItemForm(self)
 
     def add_item(self, item_name, item_value):
-        chosen_section = self.section_select.get(self.section_select.curselection())
+        chosen_section = self.section_select.get(
+            self.section_select.curselection())
         self.active_ini[chosen_section][item_name] = item_value
         self.display_section_contents()
 
@@ -217,7 +237,8 @@ class IniEditor(tk.Tk):
             self.section_select.insert(index, section)
             self.ini_elements[section] = {}
         if "DEFAULT" in self.active_ini:
-            self.section_select.insert(len(self.active_ini.sections()) + 1, "DEFAULT")
+            self.section_select.insert(
+                len(self.active_ini.sections()) + 1, "DEFAULT")
             self.ini_elements["DEFAULT"] = {}
 
     def display_section_contents(self, event=None):
@@ -225,14 +246,16 @@ class IniEditor(tk.Tk):
             msg.showerror("No File Open", "Please open an ini file first")
             return
 
-        chosen_section = self.section_select.get(self.section_select.curselection())
+        chosen_section = self.section_select.get(
+            self.section_select.curselection())
 
         for child in self.right_frame.winfo_children():
             child.pack_forget()
 
         for key in sorted(self.active_ini[chosen_section]):
-            new_label = tk.Label(self.right_frame, text=key, font=(None, 12), bg="black", fg="white")
-            new_label.pack(fill=tk.X, side=tk.TOP, pady=(10,0))
+            new_label = tk.Label(self.right_frame, text=key, font=(
+                None, 12), bg="black", fg="white")
+            new_label.pack(fill=tk.X, side=tk.TOP, pady=(10, 0))
 
             try:
                 section_elements = self.ini_elements[chosen_section]
@@ -247,20 +270,24 @@ class IniEditor(tk.Tk):
                 if value.isnumeric():
                     spinbox_default = tk.IntVar(self.right_frame)
                     spinbox_default.set(int(value))
-                    ini_element = tk.Spinbox(self.right_frame, from_=0, to=99999, textvariable=spinbox_default, bg="white", fg="black", justify="center")
+                    ini_element = tk.Spinbox(
+                        self.right_frame, from_=0, to=99999, textvariable=spinbox_default, bg="white", fg="black", justify="center")
                 else:
-                    ini_element = tk.Entry(self.right_frame, bg="white", fg="black", justify="center")
+                    ini_element = tk.Entry(
+                        self.right_frame, bg="white", fg="black", justify="center")
                     ini_element.insert(0, value)
 
                 self.ini_elements[chosen_section][key] = ini_element
 
-            ini_element.pack(fill=tk.X, side=tk.TOP, pady=(0,10))
+            ini_element.pack(fill=tk.X, side=tk.TOP, pady=(0, 10))
 
-        save_button = tk.Button(self.right_frame, text="Save Changes", command=self.file_save)
-        save_button.pack(side=tk.BOTTOM, pady=(0,20))
+        save_button = tk.Button(
+            self.right_frame, text="Save Changes", command=self.file_save)
+        save_button.pack(side=tk.BOTTOM, pady=(0, 20))
 
-        add_button = tk.Button(self.right_frame, text="Add Item", command=self.add_item_form)
-        add_button.pack(side=tk.BOTTOM, pady=(0,20))
+        add_button = tk.Button(
+            self.right_frame, text="Add Item", command=self.add_item_form)
+        add_button.pack(side=tk.BOTTOM, pady=(0, 20))
 
 
 if __name__ == "__main__":
