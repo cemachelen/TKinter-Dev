@@ -4,7 +4,7 @@
 
 ## Examples ##
 
-* [Very Basics](./Very Basics)
+* [Very Basics](./Basics)
 * [How to's](./How-tos)
 * [Styling](./Styling)
 * [Compiling](./Compiling)
