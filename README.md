@@ -30,4 +30,8 @@ conda activate TK-dev
 
 BSD-2 Clause.
 
+# CONTRIBUTING
+
+Contributions are welcome, although please note current repo set up is not geared up for full open source collaborations.
+
 <hr>
