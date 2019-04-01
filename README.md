@@ -1,6 +1,8 @@
 # TKinter Dev Playground #
 
-<!-- ![GitHub release](https://img.shields.io/github/release/cemachelen/TKinter-Dev.svg) --> ![GitHub](https://img.shields.io/github/license/cemachelen/TKinter-Dev.svg) [![GitHub top language](https://img.shields.io/github/languages/top/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev) [![GitHub issues](https://img.shields.io/github/issues/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev/commits/master) [![GitHub All Releases](https://img.shields.io/github/downloads/cemachelen/TKinter-Dev/total.svg)](https://github.com/cemachelen/TKinter-Dev/releases)
+<!-- ![GitHub release](https://img.shields.io/github/release/cemachelen/TKinter-Dev.svg) -->
+
+ ![GitHub](https://img.shields.io/github/license/cemachelen/TKinter-Dev.svg) [![GitHub top language](https://img.shields.io/github/languages/top/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev) [![GitHub issues](https://img.shields.io/github/issues/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev/issues) [![GitHub last commit](https://img.shields.io/github/last-commit/cemachelen/TKinter-Dev.svg)](https://github.com/cemachelen/TKinter-Dev/commits/master) [![GitHub All Releases](https://img.shields.io/github/downloads/cemachelen/TKinter-Dev/total.svg)](https://github.com/cemachelen/TKinter-Dev/releases)
 
 
 # Requirements
